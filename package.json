@@ -1,0 +1,12 @@
+{
+  "name": "com.sa2.yanmocker",
+  "version": "0.0.1",
+  "displayName": "YanMocker",
+  "description": "This is a package for mocking yan icon in TMP_SpriteAsset",
+  "unity": "2022.3",
+  "author": {
+    "name": "Arseny Makarov",
+    "email": "mr.ars355@gmail.com",
+    "url": ""
+  }
+}
