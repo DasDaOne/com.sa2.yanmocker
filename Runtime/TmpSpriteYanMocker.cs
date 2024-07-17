@@ -22,8 +22,11 @@ namespace TmpSpriteYanMocker
 				MockedTexture = tex;
 			}, error =>
 			{
-				Debug.Log($"Downloading texture failed with error: {error}");
+				Debug.LogWarning($"Downloading texture failed with error: {error}");
 			});
+			
+			if(MockedTexture == null)
+				yield break;
 
 			MockedTexture.wrapMode = TextureWrapMode.Clamp;
 			
@@ -43,14 +46,13 @@ namespace TmpSpriteYanMocker
 		{
 			if (!Kimicu.YandexGames.Billing.Initialized)
 			{
-				Debug.LogWarning($"You need to initialize Billing before {nameof(TmpSpriteYanMocker)}");
+				onErrorCallback?.Invoke($"You need to initialize Billing before {nameof(TmpSpriteYanMocker)}");
 				yield break;
 			}
 			
 			if (Kimicu.YandexGames.Billing.CatalogProducts == null || Kimicu.YandexGames.Billing.CatalogProducts.Length == 0)
 			{
-				Debug.LogWarning("CatalogProducts is null or has length < 0 \n" +
-				                 "Check presence of products in YandexConsole");
+				onErrorCallback?.Invoke($"You need to initialize Billing before {nameof(TmpSpriteYanMocker)}");
 				yield break;
 			}
 
